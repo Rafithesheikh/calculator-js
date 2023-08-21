@@ -39,6 +39,8 @@ function calculateParallelogramArea(){
     console.log(height)
     const area = base * height;
     setElementInnerText('parallelogram-area', area);
+    // Add to calculation entry
+    addToCalculationEntry('parallelogram-area',area);
  
 }
 
@@ -47,6 +49,16 @@ function calculateEllipseArea(){
     const minorRadius = getInputValue('ellipse-second-radius');
     const area = 3.14 * majorRadius * minorRadius;
     setElementInnerText('ellipse-area', area)
+}
+
+// Add to calculation id
+function addToCalculationEntry(areaType, area){
+   console.log(areaType+ ' ' + area)
+   const calculationEntry = document.getElementById('calculation-entry');
+   const p = document.createElement('p');
+   p.innerHTML = `${count + 1}. ${areaType} ${area} cm<sup>2</sup> <button class=btn btn-sm btn-success>Convert</button>`;
+    calculationEntry.appendChild(p);
+    const count = calculationEntry.childElementCount;
 }
 // re Usable 
 function getInputValue(fieldId){
